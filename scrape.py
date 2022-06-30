@@ -6,4 +6,9 @@ from venues.mr_smalls import mrsmalls
 # db = client.showrunner_db
 # collection = db.events
 
-mrsmalls()
+venues = [mrsmalls]
+for venue in venues:
+    for event in venue():
+        print(event)
+
+

@@ -12,6 +12,7 @@ def mrsmalls():
     page = urlopen(request).read()
     soup = bs(page, 'html.parser')
     results = soup.find_all('div', class_='cell small-12 event')
+    # print(results[:1])
     for result in results:
         listing = Event()
         listing.name = result.find('h4', class_='show-title').text.strip()
@@ -22,6 +23,4 @@ def mrsmalls():
             listing.time = result.find('span', class_='doors-open').text.strip()
         except(AttributeError):
             listing.time = result.find('span', class_='start-time').text.strip()
-        yield listing.entry_output
-
-
+        return(listing.entry_output)
