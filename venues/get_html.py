@@ -1,9 +1,7 @@
-from bs4 import BeautifulSoup as bs
 from urllib.request import Request, urlopen
 import requests
 from selenium import webdriver
 import ssl
-import time
 
 def get_html(url):
     req = requests.get(url)
@@ -23,12 +21,11 @@ def get_html(url):
         page = driver.page_source
         print('solved 101')
         return page
-
     print(req.status_code)
 
 
 
-urls = ['https://mrsmalls.com/listing/', 'https://www.ticketweb.com/venue/club-cafe-pittsburgh-pa/23219', "https://www.spiritpgh.com/events?view=calendar&month=06-2022"]
+working_urls = ['https://mrsmalls.com/listing/', 'https://thunderbirdmusichall.com/', "https://www.spiritpgh.com/events?view=calendar&month=06-2022", "https://www.livenation.com/venue/KovZ917Ax13/roxian-theatre-events", "https://cattivopgh.com/events"]
+not_working = ["https://promowestlive.com/pittsburgh/stage-ae", "https://www.ticketweb.com/venue/club-cafe-pittsburgh-pa/23219"]
 
-for url in urls:
-    get_html(url)
+get_html("http://www.brilloboxpgh.com/events/")
