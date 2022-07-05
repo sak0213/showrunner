@@ -29,6 +29,10 @@ class StageAE(Venue):
             date = listing.find('time', class_='venue-stage-ae').text.strip()
             link = listing.find('a', class_='box-link')['href']
             venue = "Stage AE"
-            time = meta.find('span', class_='doors-time').text.strip()
+            timing_meta = meta.find('div', class_='time')
+            try:
+                time = timing_meta.find('span', class_="doors-time").text.strip()
+            except(AttributeError):
+                time = "See Link"
 
             yield Event(name, desc, date, time, link, venue)
