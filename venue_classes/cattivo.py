@@ -23,7 +23,7 @@ class Cattivo(Venue):
             name = listing.find('h4', class_='x-el x-el-h4 c1-1 c1-2 c1-1r c1-1f c1-79 c1-19 c1-17 c1-16 c1-18 c1-7a c1-4y c1-b c1-62 c1-5r c1-47 c1-7b c1-5t c1-5v c1-5w c1-5x').text.strip().split("/22",1)[1]
             desc = 'n/a'
             date = listing.find('h4', class_='x-el x-el-h4 c1-1 c1-2 c1-1r c1-1f c1-79 c1-19 c1-17 c1-16 c1-18 c1-7a c1-4y c1-b c1-62 c1-5r c1-47 c1-7b c1-5t c1-5v c1-5w c1-5x').text.strip().split(" ",1)[0]
-            link = "N/a"
+            link = "n/a"
             venue = "Cattivo"
             time = "n/a"
             yield Event(name, desc, date, time, link, venue)

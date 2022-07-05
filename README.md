@@ -6,11 +6,11 @@ Working Event Venues:
  - 'https://mrsmalls.com/listing/'
  - 'https://thunderbirdmusichall.com/'
  - "https://www.livenation.com/venue/KovZ917Ax13/roxian-theatre-events"
-
-In Progress:
  - "https://cattivopgh.com/events"
  - "https://steamworkscreative.com/events/"
  - "http://www.brilloboxpgh.com/events/"
+
+In Progress:
  - "https://www.spiritpgh.com/events?view=calendar&month=06-2022"
 
 Non-Working Venues:
