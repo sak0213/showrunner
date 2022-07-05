@@ -5,11 +5,13 @@ This is a project for scraping venue websites in the pgh area in order to aggreg
 Working Event Venues:
  - 'https://mrsmalls.com/listing/'
  - 'https://thunderbirdmusichall.com/'
- - "https://www.spiritpgh.com/events?view=calendar&month=06-2022"
  - "https://www.livenation.com/venue/KovZ917Ax13/roxian-theatre-events"
+
+In Progress:
  - "https://cattivopgh.com/events"
  - "https://steamworkscreative.com/events/"
  - "http://www.brilloboxpgh.com/events/"
+ - "https://www.spiritpgh.com/events?view=calendar&month=06-2022"
 
 Non-Working Venues:
  - "https://promowestlive.com/pittsburgh/stage-ae"
