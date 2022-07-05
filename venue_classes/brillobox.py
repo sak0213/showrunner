@@ -1,6 +1,3 @@
-from bs4 import BeautifulSoup as bs
-from urllib.request import Request, urlopen
-import ssl
 from venue_classes.venue import Venue
 from typing import Iterable
 from entries import Event
