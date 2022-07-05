@@ -6,6 +6,9 @@ from venue_classes.steamworks import Steamworks
 from venue_classes.brillobox import Brillobox
 from venue_classes.spirit import Spirit
 from venue_classes.stageae import StageAE
+from venue_classes.clubcafe import ClubCafe
+from venue_classes.blackforgecoffee import BlackForge
+from venue_classes.crafthousepgh import CraftHousePGH
 
 venue_list = {
     'Mr.Smalls': MrSmalls,
@@ -15,5 +18,7 @@ venue_list = {
     "Steamworks": Steamworks,
     "Brillobox": Brillobox,
     "Spirit": Spirit,
-    "StageAE" : StageAE
+    "StageAE" : StageAE,
+    "Blackforge" : BlackForge,
+    "Crafthouse" : CraftHousePGH
 }
