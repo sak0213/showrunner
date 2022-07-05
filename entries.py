@@ -30,7 +30,7 @@ class Event:
 
     def event_output(self) -> dict:
         return {
-            'id': self.id,
+            'event_id': self.id,
             'event_name': self.event_name,
             'event_desc': self.event_desc,
             'event_venue': self.event_venue,
