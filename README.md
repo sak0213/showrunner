@@ -1,6 +1,22 @@
 # showrunner
 
 This is a project for scraping venue websites in the pgh area in order to aggregate all local events into one series of listings. And im trying to learn how to only use .py files instead of jupyter notebooks. Also, im trying out pycharm instead of vscode.
+Recent Updates:
+ - Scans 10 venues for new shows
+   - Added a function to check if an event's unique ID is already present in DB. If true, this will instantiate the next event from a venue. False adds the event to the collection.
+ - Started messing with some DB functions for selecting documents and aggregating:
+{'_id': 'Brillobox', 'events': 2}
+{'_id': 'Stage AE', 'events': 13}
+{'_id': 'Spirit', 'events': 42}
+{'_id': 'Steamworks', 'events': 68}
+{'_id': 'Roxian', 'events': 24}
+{'_id': 'Mr. Smalls', 'events': 53}
+{'_id': 'Thunderbird', 'events': 15}
+{'_id': 'Cattivo', 'events': 1}
+{'_id': 'Crafthouse', 'events': 43}
+{'_id': 'BlackForge', 'events': 107}
+ - Next steps are to add more venues and begin building frontend
+
 
 Working Event Venues:
  - Mr. Smalls - 'https://mrsmalls.com/listing/'
