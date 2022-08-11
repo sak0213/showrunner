@@ -26,9 +26,15 @@ class StageAE(Venue):
                 desc = meta.find("h3").text.strip()
             except(AttributeError):
                 desc = "n/a"
-            date = listing.find('time', class_='venue-stage-ae').text.strip()
+            try:
+                date = listing.find('time', class_='venue-stage-ae').text.strip()
+                venue = "Stage AE"
+            except(AttributeError):
+                date = listing.find('time', class_='venue-secondary').text.strip()
+                venue_search = listing.find('div', class_='venue-container')
+                venue = venue_search.find('span', class_='venue-name').text.strip()
             link = listing.find('a', class_='box-link')['href']
-            venue = "Stage AE"
+
             timing_meta = meta.find('div', class_='time')
             try:
                 time = timing_meta.find('span', class_="doors-time").text.strip()

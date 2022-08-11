@@ -20,5 +20,5 @@ venue_list = {
     "Spirit": Spirit,
     "StageAE" : StageAE,
     "Blackforge" : BlackForge,
-    "Crafthouse" : CraftHousePGH
+    "Crafthouse" : CraftHousePGH,
 }
