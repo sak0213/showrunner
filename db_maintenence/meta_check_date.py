@@ -2,7 +2,7 @@ from pymongo import MongoClient
 from datetime import datetime
 client = MongoClient('mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false')
 filter={
-    'event_venue': 'Mr. Smalls'
+    'event_venue': 'Steamworks'
 }
 project={
     'event_date': 1
@@ -17,5 +17,7 @@ result = client['showrunner_db']['events'].find(
 the_date = result[0]['event_date']
 print('The original Date')
 print(the_date)
-new_date = datetime.strptime(the_date,'%A, %B %d, %Y').date()
-print(new_date)
+print(type(the_date))
+print(len(the_date))
+new_date = datetime.strptime(the_date, '%B %d , %Y').date()
+print(str(new_date))

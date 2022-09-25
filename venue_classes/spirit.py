@@ -2,6 +2,7 @@ from venue_classes.venue import Venue
 from typing import Iterable
 from entries import Event
 import requests
+from datetime import datetime
 
 class Spirit(Venue):
     @property
@@ -18,7 +19,12 @@ class Spirit(Venue):
         for listing in event_data:
             name = listing['title']
             desc = 'n/a'
-            date = listing['startDate']
+            try:
+                source_date = listing['startDate']
+                date = datetime.fromtimestamp(source_date / 1000).date()
+                date = str(date)
+            except:
+                date = listing['startDate']
             link = "https://www.spiritpgh.com/" + listing['fullUrl']
             venue = "Spirit"
             time = listing['startDate']

@@ -5,6 +5,7 @@ from entries import Event
 from urllib.request import Request, urlopen
 import ssl
 import re
+from datetime import datetime
 
 class CraftHousePGH(Venue):
     @property
@@ -23,7 +24,12 @@ class CraftHousePGH(Venue):
         for listing in event_data:
             name = listing.find('span', class_='pp-content-grid-title pp-post-title').text.strip().split("∙", 1)[0]
             desc = 'n/a'
-            date = listing.find('span', class_='pp-content-grid-title pp-post-title').text.strip().split("∙", 1)[1]
+            try:
+                source_date = listing.find('span', class_='pp-content-grid-title pp-post-title').text.strip().split("∙", 1)[1]
+                date = datetime.strptime(source_date, ' %B %d, %Y').date()
+                date = str(date)
+            except:
+                date = listing.find('span', class_='pp-content-grid-title pp-post-title').text.strip().split("∙", 1)[1]
             link = listing.find('a', class_='pp-post-link')['href']
             venue = "Crafthouse"
             time = 'n/a'

@@ -4,6 +4,7 @@ import ssl
 from venue_classes.venue import Venue
 from typing import Iterable
 from entries import Event
+from datetime import datetime
 
 class MrSmalls(Venue):
     @property
@@ -22,7 +23,12 @@ class MrSmalls(Venue):
         for listing in event_data:
             name = listing.find('h4', class_='show-title').text.strip()
             desc = 'n/a'
-            date = listing.find('div', class_='date-show').text.strip()
+            try:
+                date_pulled = listing.find('div', class_='date-show').text.strip()
+                date = datetime.strptime(date_pulled,'%A, %B %d, %Y').date()
+                date = str(date)
+            except:
+                date = listing.find('div', class_='date-show').text.strip()
             link = listing.find('a', class_='event-title')['href']
             venue = "Mr. Smalls"
             try:

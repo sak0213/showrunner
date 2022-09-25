@@ -4,6 +4,7 @@ from typing import Iterable
 from entries import Event
 from urllib.request import Request, urlopen
 import ssl
+from datetime import datetime
 
 class StageAE(Venue):
     @property
@@ -27,10 +28,20 @@ class StageAE(Venue):
             except(AttributeError):
                 desc = "n/a"
             try:
-                date = listing.find('time', class_='venue-stage-ae').text.strip()
+                try:
+                    source_date = listing.find('time', class_='venue-stage-ae').text.strip() + ', 2022'
+                    date = datetime.strptime(source_date, '%A, %B %d, %Y').date()
+                    date = str(date)
+                except:
+                    date = listing.find('time', class_='venue-stage-ae').text.strip()
                 venue = "Stage AE"
             except(AttributeError):
-                date = listing.find('time', class_='venue-secondary').text.strip()
+                try:
+                    source_date = listing.find('time', class_='venue-secondary').text.strip() + ', 2022'
+                    date = datetime.strptime(source_date, '%A, %B %d, %Y').date()
+                    date = str(date)
+                except:
+                    date = listing.find('time', class_='venue-secondary').text.strip()
                 venue_search = listing.find('div', class_='venue-container')
                 venue = venue_search.find('span', class_='venue-name').text.strip()
             link = listing.find('a', class_='box-link')['href']

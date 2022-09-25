@@ -4,6 +4,7 @@ import ssl
 from venue_classes.venue import Venue
 from typing import Iterable
 from entries import Event
+from datetime import datetime
 
 class Cattivo(Venue):
     @property
@@ -22,7 +23,12 @@ class Cattivo(Venue):
         for listing in event_data:
             name = listing.find('h4', class_='x-el x-el-h4 c1-1 c1-2 c1-1r c1-1f c1-79 c1-19 c1-17 c1-16 c1-18 c1-7a c1-4y c1-b c1-62 c1-5r c1-47 c1-7b c1-5t c1-5v c1-5w c1-5x').text.strip().split("/22",1)[1]
             desc = 'n/a'
-            date = listing.find('h4', class_='x-el x-el-h4 c1-1 c1-2 c1-1r c1-1f c1-79 c1-19 c1-17 c1-16 c1-18 c1-7a c1-4y c1-b c1-62 c1-5r c1-47 c1-7b c1-5t c1-5v c1-5w c1-5x').text.strip().split(" ",1)[0]
+            try:
+                source_date = listing.find('h4', class_='x-el x-el-h4 c1-1 c1-2 c1-1r c1-1f c1-79 c1-19 c1-17 c1-16 c1-18 c1-7a c1-4y c1-b c1-62 c1-5r c1-47 c1-7b c1-5t c1-5v c1-5w c1-5x').text.strip().split(" ",1)[0]
+                date = datetime.strptime(source_date, '%m/%d/%y').date()
+                date = str(date)
+            except:
+                date = listing.find('h4', class_='x-el x-el-h4 c1-1 c1-2 c1-1r c1-1f c1-79 c1-19 c1-17 c1-16 c1-18 c1-7a c1-4y c1-b c1-62 c1-5r c1-47 c1-7b c1-5t c1-5v c1-5w c1-5x').text.strip().split(" ",1)[0]
             link = "n/a"
             venue = "Cattivo"
             time = "n/a"

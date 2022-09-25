@@ -5,6 +5,7 @@ from venue_classes.venue import Venue
 from typing import Iterable
 from entries import Event
 import re
+from datetime import datetime
 
 class Steamworks(Venue):
     @property
@@ -26,7 +27,16 @@ class Steamworks(Venue):
                 desc = listing.find('div', class_="tribe-events-list-event-description tribe-events-content description entry-summary").text.strip()
             except:
                 desc = "n/a"
-            date = listing.find('span', class_="tribe-event-date-start").text.strip().split("@",1)[0]
+            try:
+                source_date = listing.find('span', class_="tribe-event-date-start").text.strip().split("@",1)[0] + ', 2022'
+                date = datetime.strptime(source_date, '%B %d , %Y').date()
+                date = str(date)
+            except(ValueError):
+                source_date = listing.find('span', class_="tribe-event-date-start").text.strip().split("@", 1)[0] + ', 2022'
+                date = datetime.strptime(source_date, '%B %d, %Y').date()
+                date = str(date)
+            except:
+                date = listing.find('span', class_="tribe-event-date-start").text.strip().split("@",1)[0]
             link = listing.find('a', class_="tribe-event-url")['href']
             venue = "Steamworks"
             try:

@@ -4,6 +4,7 @@ from typing import Iterable
 from entries import Event
 from urllib.request import Request, urlopen
 import ssl
+from datetime import datetime
 
 class Thunderbird(Venue):
     @property
@@ -22,7 +23,12 @@ class Thunderbird(Venue):
         for listing in event_data:
             name = listing.find('a', class_='url')['title']
             desc = 'n/a'
-            date = listing.find('div', class_='mb-0 eventMonth singleEventDate text-uppercase').text.strip()
+            try:
+                source_date = listing.find('div', class_='mb-0 eventMonth singleEventDate text-uppercase').text.strip() + ', 2022'
+                date = datetime.strptime(source_date.replace("Sept", "Sep"), '%a, %b %d, %Y').date()
+                date = str(date)
+            except:
+                date = listing.find('div', class_='mb-0 eventMonth singleEventDate text-uppercase').text.strip()
             link = listing.find('a', class_='url')['href']
             venue = "Thunderbird"
             time = listing.find('i', class_='fa fa-clock-o').text.strip()

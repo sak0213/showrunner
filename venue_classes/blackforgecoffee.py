@@ -4,6 +4,7 @@ from venue_classes.venue import Venue
 from typing import Iterable
 from entries import Event
 import requests
+from datetime import datetime
 
 class BlackForge(Venue):
     @property
@@ -21,7 +22,12 @@ class BlackForge(Venue):
         for listing in event_data:
             name = listing['name']
             desc = listing['description']
-            date = listing['start']
+            try:
+                source_date = listing['start'] /1000
+                date = datetime.fromtimestamp(source_date, tz=None).date()
+                date = str(date)
+            except:
+                date = listing['start']
             time = listing['start']
             link = 'n/a'
             venue = 'BlackForge'

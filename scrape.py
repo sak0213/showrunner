@@ -12,11 +12,16 @@ addition_counter = 0
 
 # FULL RUN OF LIST
 for venue in venue_list.values():
-    for event in venue().get_events():
-        if check_existing(event.event_output()['event_id']) > 0:
-            duplicate_counter += 1
-            next
-        else:
-            collection.insert_one(event.event_output())
-            addition_counter += 1
+    try:
+        for event in venue().get_events():
+            if check_existing(event.event_output()['event_id']) > 0:
+                duplicate_counter += 1
+                next
+            else:
+                collection.insert_one(event.event_output())
+                addition_counter += 1
+    except Exception as e:
+        print(f'{e} error at {venue}')
+        next
+
 print(f'Update Complete! Added {addition_counter} new events and skipped {duplicate_counter} duplicates.')

@@ -4,6 +4,7 @@ import ssl
 from venue_classes.venue import Venue
 from typing import Iterable
 from entries import Event
+from datetime import datetime
 
 class Roxian(Venue):
     @property
@@ -23,7 +24,12 @@ class Roxian(Venue):
             try:
                 name = listing.find('h3').text.strip()
                 desc = listing.find('h4').text.strip()
-                date = listing.find('time')['datetime'].split("T",1)[0]
+                try:
+                    source_date = listing.find('time')['datetime'].split("T",1)[0]
+                    date = datetime.strptime(source_date, '%Y-%m-%d').date()
+                    date = str(date)
+                except:
+                    date = listing.find('time')['datetime'].split("T",1)[0]
                 link = listing.find('a', class_='listing__item__link')['href']
                 venue = "Roxian"
                 time = listing.find('time')['datetime'].split("T",1)[1]
